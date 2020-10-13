@@ -8,7 +8,7 @@ This will install all necessary node dependencies. You need to have node and npm
 
 ### Variables
 
-Set the following variables in index.html
+Set the following variables in public/index.html
 
 - token: set this to your sandbox API key
 - internalId: set this to a test internal id value
