@@ -4,7 +4,7 @@
 
 ### Installation `npm install`
 
-This will install all necessary node dependencies
+This will install all necessary node dependencies. You need to have node and npm installed on your machine.
 
 ### Variables
 
