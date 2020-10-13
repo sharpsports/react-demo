@@ -27,5 +27,5 @@ You can now view the demo at http://localhost:3000
 
 - Every time you change the "internalId" value in the button code in index.html this will indicate to the SharpSports API that a different end user (Bettor)
 is interacting with the button.
-- Once a new BettorAccount is linked by clicking the button and entering valid test user credentials (http://docs.sharpsports.io/#sandbox-and-test-users) a BettorAccount and Bettor object is created in our database.
+- Once a new BettorAccount is linked by clicking the "Link SportsBook" button and entering valid test user credentials (http://docs.sharpsports.io/#sandbox-and-test-users) a BettorAccount and Bettor object is created in our database.
 - You can then interact with the Bettors/BettorAccounts as well as randomly generated test Bets using the endpoints found at http://docs.sharpsports.io/#core-resources.
