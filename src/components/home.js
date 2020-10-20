@@ -46,21 +46,31 @@ function Home(props) {
 
     const betsArray = [];
     
-    const all_bets = axios.get('http://localhost:4000/user/bets', {headers: { 'token': localStorage.getItem('token') }})
-    .then(function (response) {
-      var bets = response.data;
-      console.log(bets);
-      // bets = response.data;
-      var i;
-      for (i=0;i<bets.length;i++) {
-        // console.log(bets[i]);
-        betsArray.push(bets[i])
-      }
-    });
+    const all_bets =  await axios.get('http://localhost:4000/user/bets', {headers: { 'token': localStorage.getItem('token') }})
+    // .then(function (response) {
+    //   var bets = response.data;
+    //   console.log(bets);
+    //   // bets = response.data;
+    //   var i;
+    //   for (i=0;i<bets.length;i++) {
+    //     // console.log(bets[i]);
+    //     betsArray.push(bets[i])
+    //   }
+    // });
 
     console.log(all_bets);
     const email = localStorage.getItem('email');
     console.log(email);
+
+    console.log(typeof all_bets);
+    console.log(all_bets);
+    // console.log(JSON.parse(all_bets));
+    console.log(Array.isArray(all_bets));
+
+
+
+    // console.log(typeof all_bets);
+    // console.log(JSON.parse(all_bets));
 
     // const mappedbets = all_bets.map((d) => {return <li key={d.contest}>{d.contest}</li>});
 
