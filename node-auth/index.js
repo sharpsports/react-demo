@@ -32,13 +32,13 @@ app.post("/bettorcreated", (req, res) => {
 
     var myquery = {email: findemail};
     var newvalues = {$set: {bettorId: bettorid}};
-    
+
     User.updateOne(myquery, newvalues, function(err, res) {
       if (err) throw err;
       console.log("1 document updated");
       // close();
     });
-    
+
   }
   catch (err) {
       console.log(err.message);
@@ -63,7 +63,7 @@ app.post("/refresh", (req, res) => {
     console.log('here');
     axios({ method: 'get', url: (`https://api.sharpsports.io/v1/bets/?refreshResponse=${refreshresponse}`), headers: { 'Authorization': 'Token 1fb886d9aff543cb6e2d87691a8b977abf12d312' }})
     .then(function(response) {
-      console.log(response.data);
+      console.log("RESPONSE DATA",response.data);
 
       function saveBet(betres) {
         id = betres.id;
@@ -105,11 +105,10 @@ app.post("/refresh", (req, res) => {
           odds,
           refreshResponse
         });
-      
+
         bet.save();
-
-
       }
+
       var betres = response.data;
       betres.forEach(saveBet);
       });

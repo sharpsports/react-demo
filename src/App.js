@@ -23,16 +23,13 @@ function App() {
                 </Route>
                 <Route path="/login">
                   <LoginForm showError={updateErrorMessage} updateTitle={updateTitle}/>
-                </Route>   
-                <Route path="/home">
-                  <Home showError={updateErrorMessage} updateTitle={updateTitle}/>
-                </Route>         
+                </Route>
+                <Route path="/home" component={Home}>
+                </Route>
               </Switch>
        </BrowserRouter>
       );
-    
+
   }
 
 export default App;
-
-
