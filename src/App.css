@@ -28,13 +28,13 @@
   color: #61dafb;
 }
 
-body{
+/* body{
     background-image: url('https://site-image-hero.s3.amazonaws.com/Balsamiq_Wireframe_main');
     background-repeat: no-repeat;
     background-size: 100%;
     background-attachment: scroll;
 
-} 
+}  */
 
 @keyframes App-logo-spin {
   from {
