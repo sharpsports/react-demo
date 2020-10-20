@@ -15,11 +15,9 @@ class Home extends React.Component {
       bets: null
     };
 
-    //this.getBettor.bind(this);
-    //this.redirectToLogin.bind(this);
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     this.getBettor()
     this.getBets()
   }
@@ -66,7 +64,6 @@ class Home extends React.Component {
 
     var mappedbets = null;
     if (this.state.bets){
-      console.log("GOT HERE BETS")
       mappedbets = this.state.bets.map((d) => {return <li key={d.contest}>{d.contest}</li>});
     }
 
