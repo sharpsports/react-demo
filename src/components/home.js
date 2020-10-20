@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import ScriptTag from 'react-script-tag';
 // import { ACCESS_TOKEN_NAME, API_BASE_URL } from '../../constants/apiConstants';
 import axios from 'axios';
 import Table from './betTable';
@@ -68,9 +69,8 @@ class Home extends React.Component {
     }
 
     return (
-      <div>
-        <Helmet>
-          <script src="https://d388bvybj12fcd.cloudfront.net/button.js"
+        <div>
+        <ScriptTag type="text/javascript" src="https://d388bvybj12fcd.cloudfront.net/button.js"
             token = "1fb886d9aff543cb6e2d87691a8b977abf12d312"
             internalid = {String(this.state.email)}
 
@@ -85,16 +85,13 @@ class Home extends React.Component {
             font-size='20px'
             border-radius='8px'
             font-family='Impact,Charcoal,sans-serif'
-            logo-url='https://sample-app-logo.s3.amazonaws.com/sample-logo-final-small.png'
-            defer>
-          </script>
-        </Helmet>
-        <div id="SSLink" style={{top:"5%", left:"5%",position:"absolute"}}>
+            logo-url='https://sample-app-logo.s3.amazonaws.com/sample-logo-final-small.png'/>
+          <div id="SSLink" style={{top:"5%", left:"5%",position:"absolute"}}>
+          </div>
+          <div>
+            {mappedbets}
+          </div>
         </div>
-        <div>
-          {mappedbets}
-        </div>
-      </div>
     );
 
 }
