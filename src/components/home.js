@@ -12,7 +12,8 @@ class Home extends React.Component {
     super(props);
     this.state = {
       email:null,
-      bets: null
+      bets: null,
+      keys: null
     };
 
   }
@@ -61,10 +62,16 @@ class Home extends React.Component {
   }
 
   render() {
-
+    // if (this.state.bets){
+    // var keys = Object.keys(this.state.bets[0]);
+    // var header = null;
+    // keys.map((key, index)=>{
+    //   header = this.state.bets.map((d) => {<th key={key}>{key.toUpperCase()}</th>});
+    // })
+    // }
     var mappedbets = null;
     if (this.state.bets){
-      mappedbets = this.state.bets.map((d) => {return <li key={d.contest}>{d.contest}</li>});
+      mappedbets = this.state.bets.map((d) => {return <li key={d.id}>{d.id}</li>});
     }
 
     return (
@@ -91,14 +98,22 @@ class Home extends React.Component {
         </Helmet>
         <div id="SSLink" style={{top:"5%", left:"5%",position:"absolute"}}>
         </div>
-        <div>
+        {/* <div>
           {mappedbets}
-        </div>
+        </div> */}
+        <div>
+          </div>
       </div>
     );
 
 }
 
+}
+
+const RenderRow = (props) =>{
+  return props.keys.map((key, index)=>{
+    return <td key={props.data[key]}>{props.data[key]}</td>
+  })
 }
 
 export default Home;
