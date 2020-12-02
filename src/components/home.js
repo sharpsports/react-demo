@@ -4,6 +4,7 @@ import ScriptTag from 'react-script-tag';
 // import { ACCESS_TOKEN_NAME, API_BASE_URL } from '../../constants/apiConstants';
 import axios from 'axios';
 import Table from './betTable';
+import FilterableTable from 'react-filterable-table';
 
 
 class Home extends React.Component {
@@ -12,8 +13,7 @@ class Home extends React.Component {
     super(props);
     this.state = {
       email:null,
-      bets: null,
-      keys: null
+      bets: null
     };
 
   }
@@ -62,13 +62,6 @@ class Home extends React.Component {
   }
 
   render() {
-    // if (this.state.bets){
-    // var keys = Object.keys(this.state.bets[0]);
-    // var header = null;
-    // keys.map((key, index)=>{
-    //   header = this.state.bets.map((d) => {<th key={key}>{key.toUpperCase()}</th>});
-    // })
-    // }
 
     var keys = null;
     var header = null;
@@ -85,10 +78,19 @@ class Home extends React.Component {
       })
     }
 
+    // var keys = null;
+    // var fields = null;
+    // if (this.state.bets){
+    //   keys = Object.keys(this.state.bets[0]);
+    //   fields = keys.map((key, index) => {return {name: {key}, displayName: {key}, inputFilterable: true, sortable: true}});
+    // }
+
     // var mappedbets = null;
     // if (this.state.bets){
-    //   mappedbets = this.state.bets.map((d) => {return <li key={d.id}>{d.id}</li>});
+    //   mappedbets = this.state.bets;
     // }
+
+
 
     return (
         <div>
@@ -125,9 +127,14 @@ class Home extends React.Component {
               </tbody>
             </table>
           </div>
-          {/* <div>
-            {mappedbets}
-          </div> */}
+          {/* <FilterableTable
+              namespace="Bets"
+              initialSort="contest"
+              data={mappedbets}
+              fields={fields}
+              noRecordsMessage="There are no people to display"
+              noFilteredRecordsMessage="No people match your filters!"
+            /> */}
         </div>
     );
 
