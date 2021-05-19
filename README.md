@@ -13,7 +13,7 @@ Set the following variables in public/index.html
 - token: set this to your sandbox API key
 - internalId: set this to a test internal id value
 
-You can also change the styling of the button using the other parameters in SharpSports button script tag.
+You can also change the styling of the button using the other parameters in SharpSports button script tag in the index.html file.
 
 ### Button Implementation
 
