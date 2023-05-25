@@ -10,7 +10,7 @@ class Home extends React.Component {
       super(props);
       this.state = { width: 0, height: 0 };
       this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-      this.internalId = 'extension-test-3'
+      this.internalId = 'extension-test'
       this.publicKey = 'a4e27d45042947e7967146c26973bbd4a4e27d45'
       this.privateKey = '433b0432d117a4c9ae338bd2e8467175d67af829'
       this.extensionAuthToken = md5(this.internalId + this.privateKey)
@@ -49,22 +49,24 @@ class Home extends React.Component {
   
     
     onLinkPopUp() {
-      this.postContext('https://api.dev.sharpsports.io/v1/context',{internalId:this.internalId, extensionAuthToken: this.extensionAuthToken})
+      this.postContext('https://api.sharpsports.io/v1/context',{internalId:this.internalId, extensionAuthToken: this.extensionAuthToken})
       .then(data => {
-        this.popupWindow(`http://ui.dev.sharpsports.io/link/${data.cid}`,'SharpSports',window,500,600)
+        console.log(data)
+        this.popupWindow(`https://ui.sharpsports.io/link/${data.cid}`,'SharpSports',window,500,600)
       })
     }
 
     onLinkRedirect() {
       let redirectUrl = window.location.href;
-      this.postContext('https://api.dev.sharpsports.io/v1/context',{internalId:this.internalId, extensionAuthToken: this.extensionAuthToken, redirectUrl:redirectUrl})
+      this.postContext('https://api.sharpsports.io/v1/context',{internalId:this.internalId, extensionAuthToken: this.extensionAuthToken, redirectUrl:redirectUrl})
       .then(data => {
-        window.location.href = `http://ui.dev.sharpsports.io/link/${data.cid}`
+        window.location.href = `https://ui.sharpsports.io/link/${data.cid}`
       })
     }
 
     async onRefresh() {
-      const response = await fetch(`https://api.dev.sharpsports.io/v1/bettors/${this.internalId}/refresh?auth=${this.extensionAuthToken}`, {
+      const sharpSportsExtensionVersion = sessionStorage.getItem("sharpSportsExtensionVersion")
+      const response = await fetch(`https://api.sharpsports.io/v1/bettors/${this.internalId}/refresh?auth=${this.extensionAuthToken}&extensionVersion=${sharpSportsExtensionVersion}`, {
         method: 'POST',
         headers: {
           'Authorization': `Token ${this.publicKey}`,
