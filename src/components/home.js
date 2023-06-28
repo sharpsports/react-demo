@@ -52,7 +52,6 @@ class Home extends React.Component {
 
     }
   
-    
     onLinkPopUp() {
       console.log("Auth Token: ", this.auth)
       let body = {
@@ -67,7 +66,6 @@ class Home extends React.Component {
         console.log(data)
         let url = `${process.env.REACT_APP_UI_BASE}/link/${data.cid}`;
         if (this.userAgent) url = url.concat(`?userAgent=${this.userAgent}`);
-        window.location.href = url;
         this.popupWindow(url,'SharpSports',window,500,600)
       })
     }
