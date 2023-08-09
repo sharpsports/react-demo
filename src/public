@@ -1,0 +1,16 @@
+
+var internalId = document.currentScript.getAttribute('internalid');
+var publicKey = document.currentScript.getAttribute('publickey');
+var extensionAuthToken = document.currentScript.getAttribute('extensionauthtoken');
+
+console.log("GOT HERE RUNNING SCRIPT")
+
+const initEvent = new CustomEvent('initSharpSportsExtension', { 
+  detail: {
+    'internalId': internalId,
+    'publicKey': publicKey,
+    'extensionAuthToken': extensionAuthToken
+  } 
+})
+
+document.dispatchEvent(initEvent);

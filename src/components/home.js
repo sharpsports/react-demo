@@ -49,24 +49,26 @@ class Home extends React.Component {
       const y = win.top.outerHeight / 2 + win.top.screenY - ( h / 2);
       const x = win.top.outerWidth / 2 + win.top.screenX - ( w / 2);
       return win.open(url, title, `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${y}, left=${x}`);
-
+    
     }
   
     onLinkPopUp() {
       console.log("Auth Token: ", this.auth)
       let body = {
         internalId: this.internalId,
-        extensionAuthToken: (this.extension) ? this.auth : null,
-        bettorToken: (this.service) ? this.auth : null
+        uiMode: process.env.REACT_APP_UI_MODE
       }
-      let url = `${process.env.REACT_APP_API_BASE}/v1/context`
-      if (this.service) url = url.concat(`?service=${this.service}`)
+      
+      if (this.extension) body['extensionAuthToken'] = this.auth;
+      if (this.service) body['bettorToken'] = this.auth;
+      let url = `${process.env.REACT_APP_API_BASE}/v1/context`;
+      if (this.service) url = url.concat(`?service=${this.service}`);
       this.postContext(url,body)
       .then(data => {
-        console.log(data)
+        console.log("Context Data: ", data)
         let url = `${process.env.REACT_APP_UI_BASE}/link/${data.cid}`;
         if (this.userAgent) url = url.concat(`?userAgent=${this.userAgent}`);
-        this.popupWindow(url,'SharpSports',window,500,600)
+        this.popupWindow(url,'SharpSports',window,500,800)
       })
     }
 
@@ -75,15 +77,18 @@ class Home extends React.Component {
       let redirectUrl = window.location.href;
       let body = {
         internalId: this.internalId,
-        extensionAuthToken: (this.extension) ? this.auth : null,
-        bettorToken: (this.service) ? this.auth : null,
-        redirectUrl
+        redirectUrl,
+        uiMode: process.env.REACT_APP_UI_MODE
       }
+
+
+      if (this.extension) body['extensionAuthToken'] = this.auth;
+      if (this.service) body['bettorToken'] = this.auth;
       let url = `${process.env.REACT_APP_API_BASE}/v1/context`
       if (this.service) url = url.concat(`?service=${this.service}`)
       this.postContext(url,body)
       .then(data => {
-        console.log(data);
+        console.log("Context Data: ", data);
         let url = `${process.env.REACT_APP_UI_BASE}/link/${data.cid}`;
         if (this.userAgent) url = url.concat(`?userAgent=${this.userAgent}`);
         window.location.href = url;
@@ -113,6 +118,7 @@ class Home extends React.Component {
       return (
         <div id="main">
           <h1>Demo Test Application</h1>
+          <p>InternalID: {this.internalId}</p>
           <p>Service: {this.service}</p>
           <p>Extension Version: {this.extensionVersion ? this.extensionVersion : "Extension Script not Initialized"}</p>
           <p>Extension Auth Passed: {this.extension.toString()}</p>
