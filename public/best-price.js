@@ -24,7 +24,8 @@ var contextData = {
   uiMode
 }
 
-let url = 'https://api.sharpsports.io/v1/context';
+let url = 'https://api.sharpsports.io/v1/context/bestPrice';
+//let url = 'http://localhost:8000/v1/context/bestPrice'
 if (auth) url += `?auth=${auth}`;
 
 postContext(url,contextData).then((data) => {
