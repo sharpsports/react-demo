@@ -58,15 +58,17 @@ class Home extends React.Component {
         internalId: this.internalId,
         uiMode: process.env.REACT_APP_UI_MODE
       }
-      
+      console.log("HELLO!")
       if (this.extension) body['extensionAuthToken'] = this.auth;
       if (this.service) body['bettorToken'] = this.auth;
-      let url = `${process.env.REACT_APP_API_BASE}/v1/context`;
+      let url = `${process.env.REACT_APP_API_BASE}/v1/context/bestPrice`;
+      //let url = `${process.env.REACT_APP_API_BASE}/v1/context`
       if (this.service) url = url.concat(`?service=${this.service}`);
       this.postContext(url,body)
       .then(data => {
         console.log("Context Data: ", data)
-        let url = `${process.env.REACT_APP_UI_BASE}/link/${data.cid}`;
+        //let url = `${process.env.REACT_APP_UI_BASE}/link/${data.cid}`;
+        let url = `${process.env.REACT_APP_UI_BASE}/best-price/${data.cid}`;
         if (this.userAgent) url = url.concat(`?userAgent=${this.userAgent}`);
         this.popupWindow(url,'SharpSports',window,500,800)
       })

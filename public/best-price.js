@@ -29,6 +29,8 @@ let url = 'https://api.sharpsports.io/v1/context/bestPrice';
 if (auth) url += `?auth=${auth}`;
 
 postContext(url,contextData).then((data) => {
+
+  console.log("GOT HERE!!!")
   var iframe = document.createElement("iframe");
   console.log("Cid: ", data.cid)
   //iframe.src = `https://ui.sharpsports.io/best-price/${data.cid}`;
